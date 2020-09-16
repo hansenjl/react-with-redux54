@@ -1,10 +1,19 @@
 import React from "react";
 // import Button from './Button'
+import { connect } from "react-redux";
+import {
+  addQuarter,
+  addDime,
+  addNickel,
+  addPenny,
+} from "./actions/coinActions";
+
+// props.dispatch({type: "QUARTER"})
 
 const ButtonContainer = (props) => {
   return (
     <div id="buttons">
-      <button onClick={() => props.updateState(25)} id="add-quarter">
+      <button onClick={() => props.addQuarter()} id="add-quarter">
         Add a Quarter
       </button>
       <button onClick={() => props.updateState(10)} id="add-dime">
@@ -20,4 +29,22 @@ const ButtonContainer = (props) => {
   );
 };
 
-export default ButtonContainer;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addQuarter: () => {
+      dispatch(addQuarter());
+    },
+    addDime: () => {
+      dispatch(addDime());
+    },
+    addNickel: () => {
+      dispatch(addNickel());
+    },
+    addPenny: () => {
+      dispatch(addPenny());
+    },
+  };
+};
+
+export default connect(null, mapDispatchToProps)(ButtonContainer);
+// export default connect(null, {addPenny, addQuarter, addDime})(ButtonContainer);

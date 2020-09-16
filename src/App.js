@@ -1,13 +1,11 @@
 import React from "react";
-import { Provider } from "react-redux";
+
 import "./App.css";
 import ButtonContainer from "./ButtonContainer";
 import DisplayTotal from "./DisplayTotal";
 
 class App extends React.Component {
-  state = {
-    total: 0,
-  };
+
 
   updateState = (amount) => {
     this.setState((prevState) => {
@@ -19,7 +17,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <header className="App-header">
-          <DisplayTotal total={this.state.total} />
+          <DisplayTotal  />
           <ButtonContainer updateState={this.updateState} />
         </header>
       </div>
